@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="quiz">
+        <div *ngFor="let question of Questions">
+            <h4>{{question.subject}}</h4>
+            <img [src]="question.img" alt="">
+            <div *ngFor="let option of question.options">
+                <label>
+                    <input type="checkbox" name="{{question.id}}" [(ngModel)]="option.selected"
+                        (change)="updateSelection(question.options, option)">
+                    {{option.label}}
+                </label>
+            </div>
+            <div *ngIf="question.options">
+                <p>Opção selecionada: {{selectedOption(question.options)?.label}}</p>
+            </div>
+        </div>
+        <button (click)="score()">Finalizar</button>
+    </div>
+</div>

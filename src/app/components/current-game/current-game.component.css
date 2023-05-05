@@ -1,0 +1,7 @@
+.quiz-question{
+    display: flex;
+    flex-direction: column;
+}
+.quiz-question-area{
+    margin: 0.5rem;
+}
