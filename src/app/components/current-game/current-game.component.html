@@ -1,6 +1,6 @@
 <div class="container">
     <div class="quiz">
-        <div *ngFor="let question of Questions">
+        <div *ngFor="let question of slicedQuestions">
             <h4>{{question.subject}}</h4>
             <img [src]="question.img" alt="">
             <div *ngFor="let option of question.options">
@@ -15,5 +15,9 @@
             </div>
         </div>
         <button (click)="score()">Finalizar</button>
+    </div>
+    <div class="quiz-paginator">
+        <button (click)="Before() ; updatePaginator()">anterior</button>
+        <button (click)="Next()  ; updatePaginator()">próximo</button>
     </div>
 </div>

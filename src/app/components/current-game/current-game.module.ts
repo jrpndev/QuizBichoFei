@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CurrentGameComponent } from './current-game.component';
 import { FormsModule } from '@angular/forms';
 import { CurrentGameRoutingModule } from './current-game-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CurrentGameRoutingModule } from './current-game-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    CurrentGameRoutingModule
+    CurrentGameRoutingModule,
+    HttpClientModule
   ],
   exports :[
     CurrentGameComponent
