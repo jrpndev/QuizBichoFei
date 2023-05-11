@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="dashboard">
+        <div class="dashboard-options">
+            <div class="dashboard-create">
+                <button (click)="menuHandle('create')">Criar</button>
+            </div>
+            <div class="dashboard-update">
+                <button (click)="menuHandle('update')">Editar questão</button>
+            </div>
+            <div class="dashborad-delete">
+                <button (click)="menuHandle('del')">Deletar questão</button>
+            </div>
+            <div class="dashboard-search">
+                <button (click)="menuHandle('search')">consultar</button>
+            </div>
+        </div>
+        <div class="dashboard-action">
+            <div class="new-question" *ngIf="create">
+
+                <form>
+
+                    <label for="subject">Assunto:</label>
+                    <input type="text" id="subject" name="subject"><br>
+
+                    <label for="solve">Solução:</label>
+                    <input type="text" id="solve" name="solve"><br>
+
+                    <fieldset>
+                        <legend>Opções:</legend>
+
+                        <label for="option1-value">A:</label>
+                        <input type="text" id="option1-value" name="option1-value">
+                        <label for="option1-label"></label>
+                        <label for="option1-correct">Correta:</label>
+                        <input type="checkbox" id="option1-correct" name="option1-correct"><br>
+
+                        <label for="option2-value">B:</label>
+                        <input type="text" id="option2-value" name="option2-value">
+                        <label for="option2-label"></label>
+                        <label for="option2-correct">Correta:</label>
+                        <input type="checkbox" id="option2-correct" name="option2-correct"><br>
+
+                        <label for="option3-value">C:</label>
+                        <input type="text" id="option3-value" name="option3-value">
+                        <label for="option3-label"></label>
+                        <label for="option3-correct">Correta:</label>
+                        <input type="checkbox" id="option3-correct" name="option3-correct"><br>
+
+                        <label for="option4-value">D:</label>
+                        <input type="text" id="option4-value" name="option4-value">
+                        <label for="option4-label"></label>
+                        <label for="option4-correct">Correta:</label>
+                        <input type="checkbox" id="option4-correct" name="option4-correct"><br>
+
+
+                    </fieldset>
+
+                    <label for="img">Imagem:</label>
+                    <input type="text">
+                    <label for="">Confirmação de envio</label>
+                    <input type="submit">
+                </form>
+            </div>
+            <div class="update-question" *ngIf="update">
+                update
+            </div>
+            <div class="search-question" *ngIf="search">
+                search
+            </div>
+            <div class="delete-question" *ngIf="del">
+                delete
+            </div>
+        </div>
+    </div>
+</div>

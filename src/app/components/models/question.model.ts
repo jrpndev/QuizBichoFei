@@ -9,5 +9,6 @@ export interface Question {
         { value: string, label: string, selected: boolean, correct: boolean}
     ],
     isMarked: boolean,
-    img: string
+    img: string,
+    area : string
 }
