@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15rem;
+    width: 10rem;
+    height: 5rem;
+}
+
+button {
+    border-radius: 15px;
+    width: 8rem;
+    height: 2rem;
+}
+
+button:hover {
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+}
+
+.dashboard-action {
+    display: flex;
+    justify-content: center;
+}
+
+.new-question form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+}
+
+.new-question input[type="text"],
+.new-question input[type="checkbox"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.new-question input[type="submit"] {
+    margin-top: 20px;
+    background-color: #0077be;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.new-question input[type="submit"]:hover {
+    background-color: #005ea8;
+}
+
+.new-question label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.new-question fieldset {
+    margin-top: 20px;
+    border: none;
+    padding: 0;
+}
+
+.new-question legend {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.update-question,
+.search-question,
+.delete-question {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    text-align: center;
+}

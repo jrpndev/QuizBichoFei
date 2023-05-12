@@ -1,24 +1,22 @@
 <div class="container">
     <div class="dashboard">
         <div class="dashboard-options">
-            <div class="dashboard-create">
+            <div class="dashboard-area">
                 <button (click)="menuHandle('create')">Criar</button>
             </div>
-            <div class="dashboard-update">
+            <div class="dashboard-area">
                 <button (click)="menuHandle('update')">Editar questão</button>
             </div>
-            <div class="dashborad-delete">
+            <div class="dashboard-area">
                 <button (click)="menuHandle('del')">Deletar questão</button>
             </div>
-            <div class="dashboard-search">
+            <div class="dashboard-area">
                 <button (click)="menuHandle('search')">consultar</button>
             </div>
         </div>
         <div class="dashboard-action">
             <div class="new-question" *ngIf="create">
-
                 <form>
-
                     <label for="subject">Assunto:</label>
                     <input type="text" id="subject" name="subject"><br>
 
