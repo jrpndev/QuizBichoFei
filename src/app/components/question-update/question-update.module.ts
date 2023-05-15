@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './dashboard.component';
-import { DashboardRoutingModule } from './dashborad-routing.module';
+import { QuestionUpdateComponent } from './question-update.component';
+import { UpdateQuestionRoutingModule } from './question-update-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -9,14 +9,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
+    QuestionUpdateComponent
   ],
   imports: [
-    FormsModule,
     CommonModule,
-    DashboardRoutingModule,
+    UpdateQuestionRoutingModule,
+    FormsModule,
     HttpClientModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ]
 })
-export class DashboardModule { }
+export class QuestionUpdateModule { }

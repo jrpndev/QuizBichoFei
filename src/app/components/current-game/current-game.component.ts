@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../models/question.model';
 
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-current-game',
@@ -17,7 +18,7 @@ export class CurrentGameComponent implements OnInit {
 
   next: number = 5;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
   ngOnInit(): void {
 
     this.getQuestionsFromDatabase();
@@ -75,14 +76,11 @@ export class CurrentGameComponent implements OnInit {
 
   answerQuestion(option: string, id: number) {
     this.Questions.map(a => {
-      if (a.id == id) {
-        if (a.solve == option) {
-          a.isMarked = true
+      a.options.map(b => {
+        if (b.selected && b.correct) {
+          a.isMarked = true;
         }
-        else {
-          a.isMarked = false
-        }
-      }
+      })
     })
   }
 
@@ -90,6 +88,6 @@ export class CurrentGameComponent implements OnInit {
     this.Questions.map(a => a.options.map(b => {
       if (b.correct && b.selected) this.Score++;
     }))
-    console.log(this.Score);
+    this.router.navigate([`score/${this.Score}`])
   }
 }

@@ -1,23 +1,23 @@
 <div class="container">
     <div class="quiz">
-        <div *ngFor="let question of slicedQuestions">
-            <h4>{{question.subject}}</h4>
+        <div class="quiz-question" *ngFor="let question of slicedQuestions">
+            <h4>{{question.subject}}<i>ID:{{question.id}}</i></h4>
             <img [src]="question.img" alt="">
-            <div *ngFor="let option of question.options">
+            <div class="quiz-options" *ngFor="let option of question.options">
                 <label>
                     <input type="checkbox" name="{{question.id}}" [(ngModel)]="option.selected"
                         (change)="updateSelection(question.options, option)">
-                    {{option.label}}
+                    {{option.value}}
                 </label>
             </div>
             <div *ngIf="question.options">
-                <p>Opção selecionada: {{selectedOption(question.options)?.label}}</p>
+                <p>Opção selecionada: {{selectedOption(question.options)?.value}}</p>
             </div>
         </div>
         <button (click)="score()">Finalizar</button>
-    </div>
-    <div class="quiz-paginator">
-        <button (click)="Before() ; updatePaginator()">anterior</button>
-        <button (click)="Next()  ; updatePaginator()">próximo</button>
+        <div class="quiz-paginator">
+            <button (click)="Before() ; updatePaginator()">anterior</button>
+            <button (click)="Next()  ; updatePaginator()">próximo</button>
+        </div>
     </div>
 </div>

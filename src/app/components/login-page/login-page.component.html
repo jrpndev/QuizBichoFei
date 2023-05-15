@@ -11,15 +11,16 @@
         <div class="login-form">
             <label for="" class="title">Login</label>
             <div class="login-email">
-                <label for="">Email</label>
+                <label for="" [(ngModel)]="email">Email</label>
                 <input type="email" placeholder="Email">
             </div>
             <div class="login-password">
-                <label for="">Senha</label>
+                <label for="" [(ngModel)]="password">Senha</label>
                 <input type="password">
             </div>
             <div class="login-submit">
                 <button (click)="login()">Entrar</button>
+                <button>Cadastrar</button>
             </div>
         </div>
     </div>

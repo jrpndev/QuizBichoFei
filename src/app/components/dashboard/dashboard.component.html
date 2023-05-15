@@ -2,71 +2,79 @@
     <div class="dashboard">
         <div class="dashboard-options">
             <div class="dashboard-area">
+                <img class="dashboard-icon" src="https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png" alt="">
                 <button (click)="menuHandle('create')">Criar</button>
             </div>
             <div class="dashboard-area">
-                <button (click)="menuHandle('update')">Editar questão</button>
-            </div>
-            <div class="dashboard-area">
-                <button (click)="menuHandle('del')">Deletar questão</button>
-            </div>
-            <div class="dashboard-area">
-                <button (click)="menuHandle('search')">consultar</button>
+                <img class="dashboard-icon" src="https://cdn.icon-icons.com/icons2/1129/PNG/512/searchmagnifierinterfacesymbol1_79893.png" alt="">
+                <button (click)="menuHandle('search')">Econtrar questão</button>
             </div>
         </div>
         <div class="dashboard-action">
-            <div class="new-question" *ngIf="create">
+            <div class="form-layout" *ngIf="create">
                 <form>
                     <label for="subject">Assunto:</label>
-                    <input type="text" id="subject" name="subject"><br>
-
-                    <label for="solve">Solução:</label>
-                    <input type="text" id="solve" name="solve"><br>
+                    <input type="text" [(ngModel)]="Question.subject" id="subject" name="subject"><br>
 
                     <fieldset>
                         <legend>Opções:</legend>
 
                         <label for="option1-value">A:</label>
-                        <input type="text" id="option1-value" name="option1-value">
+                        <input type="text" id="option1-value" name="option1-value"
+                            [(ngModel)]="Question.options[0].value"><br>
                         <label for="option1-label"></label>
                         <label for="option1-correct">Correta:</label>
-                        <input type="checkbox" id="option1-correct" name="option1-correct"><br>
+                        <input type="checkbox" id="option1-correct" name="option1-correct"
+                            [(ngModel)]="Question.options[0].correct"><br>
 
                         <label for="option2-value">B:</label>
-                        <input type="text" id="option2-value" name="option2-value">
+                        <input type="text" id="option2-value" name="option2-value"
+                            [(ngModel)]="Question.options[1].value"><br>
                         <label for="option2-label"></label>
                         <label for="option2-correct">Correta:</label>
-                        <input type="checkbox" id="option2-correct" name="option2-correct"><br>
+                        <input type="checkbox" id="option2-correct" name="option2-correct"
+                            [(ngModel)]="Question.options[1].correct"><br>
 
                         <label for="option3-value">C:</label>
-                        <input type="text" id="option3-value" name="option3-value">
+                        <input type="text" id="option3-value" name="option3-value"
+                            [(ngModel)]="Question.options[2].value"><br>
                         <label for="option3-label"></label>
                         <label for="option3-correct">Correta:</label>
-                        <input type="checkbox" id="option3-correct" name="option3-correct"><br>
+                        <input type="checkbox" id="option3-correct" name="option3-correct"
+                            [(ngModel)]="Question.options[2].correct"><br>
 
                         <label for="option4-value">D:</label>
-                        <input type="text" id="option4-value" name="option4-value">
+                        <input type="text" id="option4-value" name="option4-value"
+                            [(ngModel)]="Question.options[3].value"><br>
                         <label for="option4-label"></label>
                         <label for="option4-correct">Correta:</label>
-                        <input type="checkbox" id="option4-correct" name="option4-correct"><br>
-
-
+                        <input type="checkbox" id="option4-correct" name="option4-correct"
+                            [(ngModel)]="Question.options[3].correct"><br>
                     </fieldset>
 
+
                     <label for="img">Imagem:</label>
-                    <input type="text">
+                    <input type="url" [(ngModel)]="Question.img" id="img" name="img">
                     <label for="">Confirmação de envio</label>
-                    <input type="submit">
+                    <input type="submit" (click)="postOfQuestions()">
                 </form>
             </div>
-            <div class="update-question" *ngIf="update">
-                update
-            </div>
-            <div class="search-question" *ngIf="search">
-                search
-            </div>
-            <div class="delete-question" *ngIf="del">
-                delete
+            <div class="form-layout" *ngIf="search">
+                <form action="">
+                    <input type="text" placeholder="ID da questão" (change)="filterQuestions()">
+                    <div class="data-area" *ngFor="let question of indexOfQuestions">
+                        <label for="">ID:{{question.id}}</label>
+                        <label for="">Título : {{question.subject}}</label>
+                        <div class="icon-area">
+                            <img class="form-icon"
+                                src="https://cdn.icon-icons.com/icons2/931/PNG/512/delete_remove_bin_icon-icons.com_72400.png"
+                                alt="" (click)="confirmDialog(question.id)">
+                            <img class="form-icon"
+                                src="https://cdn.icon-icons.com/icons2/1744/PNG/512/3643749-edit-pen-pencil-write-writing_113397.png"
+                                alt="" (click)="editQuestion(question.id)">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

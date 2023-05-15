@@ -1,37 +1,33 @@
 {
-    "questions": [
+  "questions": [
+    {
+      "id": 1,
+      "subject": "Engenharia de software é?",
+      "options": [
         {
-            "id": 1,
-            "subject": "Quanto é 2 + 2 ? ",
-            "solve": "4",
-            "options": [
-                {
-                    "value": "2",
-                    "label": "2",
-                    "selected": false,
-                    "correct": false
-                },
-                {
-                    "value": "4",
-                    "label": "4",
-                    "selected": false,
-                    "correct": true
-                },
-                {
-                    "value": "6",
-                    "label": "6",
-                    "selected": false,
-                    "correct": false
-                },
-                {
-                    "value": "8",
-                    "label": "8",
-                    "selected": false,
-                    "correct": false
-                }
-            ],
-            "isMarked": false,
-            "img": "https://picsum.photos/500/500"
+          "value": "Programa",
+          "selected": false,
+          "correct": false
+        },
+        {
+          "value": "SEI",
+          "selected": false,
+          "correct": false
+        },
+        {
+          "value": "besteira",
+          "selected": false,
+          "correct": false
+        },
+        {
+          "value": "Melhor",
+          "selected": false,
+          "correct": true
         }
-    ]
+      ],
+      "isMarked": false,
+      "img": "https://www.napratica.org.br/wp-content/uploads/2021/02/engenharia-de-software.jpg",
+      "area": ""
+    }
+  ]
 }

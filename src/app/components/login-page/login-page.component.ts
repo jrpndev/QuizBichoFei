@@ -7,9 +7,14 @@ import { Router, Routes } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  
+
   constructor(private router : Router){}
+
+  email : string = ''
+  password : string = ''
+
   login() {
-    this.router.navigate(['dashboard']);
+    if(this.email == 'liliene@gmail.com' && this.password == '123') this.router.navigate(['dashboard']);
+    else this.router.navigate(['quiz'])
   }
 }
