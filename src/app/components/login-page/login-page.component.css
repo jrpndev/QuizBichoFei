@@ -52,12 +52,12 @@
 }
 .login-upper{
     position: absolute;
-    top: 12%;
-    left:20%;
+    top: 20%;
+    left:5%;
 }
 .login-under{
     position: absolute;
-    top: 65%;
+    top: 75%;
     left:40%;
 }
 .login-image{

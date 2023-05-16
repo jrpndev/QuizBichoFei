@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Question } from '../models/question.model';
-
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Question } from '../models/question.model';
 
 @Component({
   selector: 'app-current-game',
@@ -11,83 +9,66 @@ import { Router } from '@angular/router';
   styleUrls: ['./current-game.component.css']
 })
 export class CurrentGameComponent implements OnInit {
-
-  baseUrl = "http://localhost:3001/questions"
-
-  before: number = 0;
-
-  next: number = 5;
-
-  constructor(private http: HttpClient, private router : Router) { }
-  ngOnInit(): void {
-
-    this.getQuestionsFromDatabase();
-
-  }
-
-  updateSelection(options: any, selectedOption: any) {
-    for (let option of options) {
-      if (option.label !== selectedOption.label) {
-        option.selected = false;
-      }
-    }
-  }
-
-  selectedOption(options: any) {
-    for (let option of options) {
-      if (option.selected) {
-        return option;
-      }
-    }
-    return null;
-  }
-
-  Score: number = 0;
-
+  finish: boolean = false;
+  baseUrl = "http://localhost:3001/questions";
+  currentIndex: number = 0;
+  pageSize: number = 5;
   Questions: Question[] = [];
-
   slicedQuestions: Question[] = [];
 
-  Next() {
-    if (this.next == this.Questions.length) {
-      console.log("Erro");
-    } else {
-      this.next += 5;
-      this.before = this.before + 5;
-    }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  ngOnInit(): void {
+    this.getQuestionsFromDatabase();
   }
-  Before() {
-    if (this.before == 0) {
-      console.log("Erro");
-    } else {
-      this.next = this.next - 5;
-      this.before = this.before - 5;
-    }
+
+  updateSelection(question: Question, selectedOption: string) {
+    question.options.forEach(option => {
+      option.selected = (option.value === selectedOption);
+    });
   }
+
+
+  selectedOption(options: any) {
+    return options.find((option: any) => option.selected);
+  }
+
   updatePaginator() {
-    this.slicedQuestions = this.Questions.slice(this.before, this.next);
+    const startIndex = this.currentIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.slicedQuestions = this.Questions.slice(startIndex, endIndex);
   }
+
   getQuestionsFromDatabase() {
     this.http.get<Question[]>(this.baseUrl).subscribe(res => {
       this.Questions = res;
-      this.slicedQuestions = this.Questions.slice(0, 5);
+      this.updatePaginator();
     })
   }
 
-  answerQuestion(option: string, id: number) {
-    this.Questions.map(a => {
-      a.options.map(b => {
-        if (b.selected && b.correct) {
-          a.isMarked = true;
-        }
-      })
-    })
+  next() {
+    if (this.currentIndex < this.Questions.length / this.pageSize - 1) {
+      this.currentIndex++;
+      this.updatePaginator();
+    }
+  }
+
+  previous() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updatePaginator();
+    }
   }
 
   score() {
-    this.Questions.map(a => a.options.map(b => {
-      if (b.correct && b.selected) this.Score++;
-    }))
-    this.router.navigate([`score/${this.Score}`])
+    let score = 0;
+    this.Questions.forEach(question => {
+      const selectedOption = this.selectedOption(question.options);
+      if (selectedOption && selectedOption.correct) {
+        score++;
+      }
+      question.isMarked = true;
+    });
+    this.router.navigate([`score/${score}`]);
   }
 }
