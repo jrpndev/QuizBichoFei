@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Question } from '../models/question.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-current-game',
@@ -12,12 +13,16 @@ export class CurrentGameComponent implements OnInit {
   showFinishButton: boolean = false;
   finish: boolean = false;
   baseUrl = "http://localhost:3001/questions";
+  userUrl = "http://localhost:3001/users"
   currentIndex: number = 0;
   pageSize: number = 1;
   Questions: Question[] = [];
   slicedQuestions: Question[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit(): void {
     this.getQuestionsFromDatabase();
@@ -69,14 +74,24 @@ export class CurrentGameComponent implements OnInit {
   }
 
   score() {
-    let score = 0;
+    let recorde = 0;
     this.Questions.forEach(question => {
       const selectedOption = this.selectedOption(question.options);
       if (selectedOption && selectedOption.correct) {
-        score++;
+        recorde++;
       }
       question.isMarked = true;
     });
-    this.router.navigate([`score/${score}`]);
+    this.router.navigate([`score/${recorde}`]);
+    const url = `${this.userUrl}/${this.auth.getId()}`;
+    this.http.patch(url, { recorde }).subscribe(
+      response => {
+        // Lógica após a atualização do campo "score"
+      },
+      error => {
+        // Tratamento de erro
+      }
+    );
   }
+
 }

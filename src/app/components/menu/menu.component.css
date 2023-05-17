@@ -12,6 +12,7 @@
 }
 
 .large-button {
+  cursor: pointer;
   padding: 20px 40px;
   font-size: 24px;
   margin-bottom: 20px;

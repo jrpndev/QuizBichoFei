@@ -11,7 +11,9 @@ const routes: Routes = [
   { path: 'score/:points', canActivate: [AuthGuard], loadChildren: () => import('./components/score/score.module').then(m => m.ScoreModule) },
   { path: 'register', loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule) },
   { path: 'menu', canActivate: [AuthGuard], loadChildren: () => import('./components/menu/menu.module').then(m => m.MenuModule) },
-  { path: 'mode', canActivate: [AuthGuard], loadChildren: () => import('./components/mode/mode.module').then(m => m.ModeModule) }
+  { path: 'mode', canActivate: [AuthGuard], loadChildren: () => import('./components/mode/mode.module').then(m => m.ModeModule) },
+  { path: 'ranking', canActivate: [AuthGuard], loadChildren: () => import('./components/ranking/ranking.module').then(m => m.RankingModule) }
+
 ];
 
 @NgModule({

@@ -33,6 +33,7 @@ export class RegisterComponent {
     private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.getUsers();
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
       date: ['', [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)]],
@@ -68,7 +69,7 @@ export class RegisterComponent {
             verticalPosition: 'top', // Define a posição vertical do Snackbar ('top' ou 'bottom')
             panelClass: 'success-snackbar' // Define uma classe CSS personalizada para estilizar o Snackbar de sucesso
           });
-          this.router.navigate(['quiz'])
+          this.router.navigate([''])
         });
       }
     }

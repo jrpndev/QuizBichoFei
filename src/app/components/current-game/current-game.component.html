@@ -1,5 +1,8 @@
 <div class="container">
     <div class="quiz">
+        <div *ngIf="Questions.length == 0" class="warning">
+            <i>Não há questões disponíveis</i>
+        </div>
         <div class="quiz-question" *ngFor="let question of slicedQuestions">
             <h4>{{question.subject}}<i>ID:{{question.id}}</i></h4>
             <img [src]="question.img" alt="">
@@ -17,7 +20,7 @@
         </div>
 
         <div class="quiz-paginator">
-            <button (click)="previous(); updatePaginator()">Anterior</button>
+            <button *ngIf="Questions.length !=0" (click)="previous(); updatePaginator()">Anterior</button>
             <button *ngIf="!finish" (click)="next(); updatePaginator()">
                 próximo
             </button>

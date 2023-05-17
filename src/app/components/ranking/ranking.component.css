@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ranking {
+    background-color: white;
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  thead th {
+    background-color: #f0f0f0;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background-color: #ebebeb;
+  }
+  

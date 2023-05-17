@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="ranking">
+        <table>
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Usuário</th>
+                <th>Pontuação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.recorde }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+</div>

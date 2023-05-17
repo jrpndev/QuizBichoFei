@@ -6,6 +6,7 @@ import { User } from '../components/models/user.model';
 })
 export class AuthService {
   private isAuthenticated: boolean = false;
+  private isUserId: any;
 
   login(email: string, password: string, users: User[]): any {
     let aproved;
@@ -15,10 +16,14 @@ export class AuthService {
       return 0;
     } else if (user != null) {
       this.isAuthenticated = true;
-      return user.id;
+      this.isUserId = user.id;
     } else {
       return -1;
     }
+  }
+
+  getId(){
+    return this.isUserId;
   }
 
   logout(): void {
