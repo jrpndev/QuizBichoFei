@@ -7,7 +7,7 @@
                 <label>
                     <input type="checkbox" name="{{question.id}}" [value]="option.value" [checked]="option.selected"
                         (change)="updateSelection(question, option.value)">
-                        {{option.value}}
+                    {{option.value}}
 
                 </label>
             </div>
@@ -15,10 +15,15 @@
                 <p>Opção selecionada: {{selectedOption(question.options)?.value}}</p>
             </div>
         </div>
-        <button *ngIf="finish" (click)="score()">Finalizar</button>
+
         <div class="quiz-paginator">
             <button (click)="previous(); updatePaginator()">Anterior</button>
-            <button (click)="next(); updatePaginator()">Próximo</button>
+            <button *ngIf="!finish" (click)="next(); updatePaginator()">
+                próximo
+            </button>
+            <div *ngIf="showFinishButton">
+                <button (click)="score()" class="quiz-finish-button">Finalizar</button>
+            </div>
         </div>
     </div>
 </div>

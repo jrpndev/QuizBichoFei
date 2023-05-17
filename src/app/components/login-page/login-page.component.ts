@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +11,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private router: Router, private http: HttpClient, private snackBar: MatSnackBar) { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
+    private auth: AuthService) { }
 
   baseUrl = "http://localhost:3001/users";
   users: User[] = [];
@@ -27,17 +32,21 @@ export class LoginPageComponent implements OnInit {
     this.getUsers();
   }
 
-  login() {
-    if (this.email == '123' && this.password === '123') { this.router.navigate(['dashboard']) } else {
-      const foundUser = this.users.filter((user) => user.email === this.email && user.password === this.password);
-      foundUser.length > 0
-        ? this.router.navigate(['menu'])
-        : this.snackBar.open('Usuário ou senha incorretos', 'Fechar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          panelClass: 'success-snackbar'
-        });
+  login(){
+    const id = this.auth.login(this.email, this.password , this.users);
+    if(id == 0){
+      this.router.navigate(['dashboard'])
+    }
+    else if(id!=-1){
+      this.router.navigate(['menu'])
+    }
+    else{
+      this.snackBar.open('Usuário ou senha incorretos', 'Fechar', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        panelClass: 'success-snackbar'
+      });
     }
   }
 

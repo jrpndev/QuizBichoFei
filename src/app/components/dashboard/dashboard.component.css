@@ -17,23 +17,10 @@
 
 .dashboard-area {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 15rem;
-    width: 10rem;
-    height: 5rem;
-}
-
-button {
-    border-radius: 15px;
-    width: 8rem;
-    height: 2rem;
-}
-
-button:hover {
-    cursor: pointer;
-    width: 10rem;
-    height: 3rem;
+    margin-top: 1rem;
 }
 
 .dashboard-action {
@@ -109,13 +96,15 @@ button:hover {
     width: 50%;
     text-align: center;
 }
-.form-icon{
+
+.form-icon {
     width: 30px;
     height: 30px;
     margin: 1rem;
     cursor: pointer;
 }
-.data-area{
+
+.data-area {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -123,14 +112,32 @@ button:hover {
     border-bottom: 1px solid black;
     padding: 5px;
 }
-.icon-area{
+
+.icon-area {
     display: flex;
     width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-.dashboard-icon{
+
+.dashboard-icon {
     width: 30px;
     height: 30px;
+}
+
+.large-button {
+    width: 200px;
+    height: 100px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+    justify-content: center;
+}
+
+.large-button i {
+    margin-right: 10px;
 }

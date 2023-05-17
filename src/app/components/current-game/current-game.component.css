@@ -66,3 +66,6 @@
     background-color: #d1d1d1;
     cursor: not-allowed;
 }
+.quiz-finish-button{
+    background: radial-gradient(circle at 50%, #0077be, #f7347a);
+}

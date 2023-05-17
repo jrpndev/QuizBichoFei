@@ -2,12 +2,14 @@
     <div class="dashboard">
         <div class="dashboard-options">
             <div class="dashboard-area">
-                <img class="dashboard-icon" src="https://cdn.icon-icons.com/icons2/2778/PNG/512/create_edit_modify_icon_176960.png" alt="">
-                <button (click)="menuHandle('create')">Criar</button>
-            </div>
-            <div class="dashboard-area">
-                <img class="dashboard-icon" src="https://cdn.icon-icons.com/icons2/1129/PNG/512/searchmagnifierinterfacesymbol1_79893.png" alt="">
-                <button (click)="menuHandle('search')">Econtrar questão</button>
+                <button class="large-button" (click)="menuHandle('create')">
+                    Criar<i class="fas fa-plus"></i>
+                </button>
+
+
+                <button class="large-button" (click)="menuHandle('search')">
+                    Encontrar questão<i class="fas fa-search"></i>
+                </button>
             </div>
         </div>
         <div class="dashboard-action">

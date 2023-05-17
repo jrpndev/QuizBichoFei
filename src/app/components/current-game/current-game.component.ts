@@ -9,10 +9,11 @@ import { Question } from '../models/question.model';
   styleUrls: ['./current-game.component.css']
 })
 export class CurrentGameComponent implements OnInit {
+  showFinishButton: boolean = false;
   finish: boolean = false;
   baseUrl = "http://localhost:3001/questions";
   currentIndex: number = 0;
-  pageSize: number = 5;
+  pageSize: number = 1;
   Questions: Question[] = [];
   slicedQuestions: Question[] = [];
 
@@ -37,6 +38,13 @@ export class CurrentGameComponent implements OnInit {
     const startIndex = this.currentIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.slicedQuestions = this.Questions.slice(startIndex, endIndex);
+    this.finish = endIndex >= this.Questions.length;
+    this.showFinishButton = this.finish && !this.isFirstQuestion();
+
+  }
+
+  isFirstQuestion() {
+    return this.currentIndex === 0;
   }
 
   getQuestionsFromDatabase() {
